@@ -122,3 +122,8 @@ body{ margin:0; padding:0; height:100vh; width:100%; }
 .bg {
   background-image: url('../images/bg.png');
 }
+
+.hc-luckywheel-item span {
+  max-width: 40px;
+  overflow: hidden;
+}
