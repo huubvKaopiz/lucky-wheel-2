@@ -34,9 +34,9 @@
       var isPercentage = true;
       var prizes = [
               {
-                text: "5% tất cả các D/vụ",
+                text: "01 Liệu trình trị Mụn: Miễn phí (5 triệu)",
                 number: 1,
-                percentpage: 10/100
+                percentpage: 0/100
               },
               {
                 text: "10% tất cả các D/vụ",
@@ -44,45 +44,45 @@
                 percentpage: 2/100 
               },
               {
+                text: "01 buổi Laser Co2 Fractinonal (2 triệu)",
+                number: 1,
+                percentpage: 3/100
+              },
+              {
+                text: "01 buổi Laser Toning (1,1 triệu)",
+                number: 1,
+                percentpage: 5/100
+              }, 
+              {
+                text: "01 Liệu trình triệt nách (1 triệu)",
+                number: 1,
+                percentpage: 10/100
+              },  
+              {
+                text: "5% tất cả các D/vụ",
+                number: 1,
+                percentpage: 10/100
+              },
+              {
                 text: "15% dược, mỹ phẩm",
                 number : 1,
                 percentpage: 10/100
               },
               {
-                text: "01 buổi Chăm sóc da Mụn (299k)",
+                text: "01 buổi IPL (700k)",
                 number: 1,
                 percentpage: 20/100
-              },
+              }, 
               {
                 text: "01 buổi Điện di HA (500k)",
                 number: 1,
                 percentpage: 20/100
               },
               {
-                text: "01 buổi IPL (700k)",
+                text: "01 buổi Chăm sóc da Mụn (299k)",
                 number: 1,
                 percentpage: 20/100
-              },
-              {
-                text: "01 Liệu trình triệt nách (1 triệu)",
-                number: 1,
-                percentpage: 10/100
-              },
-              {
-                text: "01 buổi Laser Toning (1,1 triệu)",
-                number: 1,
-                percentpage: 5/100
-              },
-              {
-                text: "01 buổi Laser Co2 Fractinonal (2 triệu)",
-                number: 1,
-                percentpage: 3/100
-              },
-              {
-                text: "01 Liệu trình trị Mụn: Miễn phí (5 triệu)",
-                number: 1,
-                percentpage: 0/100
-              },
+              },         
             ];
       document.addEventListener(
         "DOMContentLoaded",
@@ -136,24 +136,42 @@
             return null
           }
           let rand = Math.random();
-          let prizeIndex = null;
+          let prizeIndex = 9;
           switch (true) {
-            case rand < prizes[4].percentpage:
+            case rand < prizes[9].percentpage:
+              prizeIndex = 9;
+              break;
+            case rand < prizes[9].percentpage + prizes[8].percentpage:
+              prizeIndex = 8;
+              break;
+            case rand < prizes[9].percentpage + prizes[8].percentpage + prizes[7].percentpage:
+              prizeIndex = 7;
+              break;
+            case rand < prizes[9].percentpage + prizes[8].percentpage + prizes[7].percentpage + prizes[6].percentpage:
+              prizeIndex = 6;
+              break;
+            case rand < prizes[9].percentpage + prizes[8].percentpage + prizes[7].percentpage + prizes[6].percentpage + prizes[5].percentpage:
+              prizeIndex = 5;
+              break;
+            case rand < prizes[9].percentpage + prizes[8].percentpage + prizes[7].percentpage + prizes[6].percentpage + prizes[5].percentpage + prizes[4].percentpage:
               prizeIndex = 4 ;
               break;
-            case rand < prizes[4].percentpage + prizes[3].percentpage:
+            case rand < prizes[9].percentpage + prizes[8].percentpage + prizes[7].percentpage + prizes[6].percentpage + prizes[5].percentpage + prizes[4].percentpage + prizes[3].percentpage:
               prizeIndex = 3;
               break;
-            case rand < prizes[4].percentpage + prizes[3].percentpage + prizes[2].percentpage:
+            case rand < prizes[9].percentpage + prizes[8].percentpage + prizes[7].percentpage + prizes[6].percentpage + prizes[5].percentpage + prizes[4].percentpage + prizes[3].percentpage + prizes[2].percentpage:
               prizeIndex = 2;
               break;
-            case rand < prizes[4].percentpage + prizes[3].percentpage + prizes[2].percentpage + prizes[1].percentpage:
+            case rand < prizes[9].percentpage + prizes[8].percentpage + prizes[7].percentpage + prizes[6].percentpage + prizes[5].percentpage + prizes[4].percentpage + prizes[3].percentpage + prizes[2].percentpage + prizes[1].percentpage:
               prizeIndex = 1;
               break;  
-            case rand < prizes[4].percentpage + prizes[3].percentpage + prizes[2].percentpage + prizes[1].percentpage  + prizes[0].percentpage:
+            case rand < prizes[9].percentpage + prizes[8].percentpage + prizes[7].percentpage + prizes[6].percentpage + prizes[5].percentpage + prizes[4].percentpage + prizes[3].percentpage + prizes[2].percentpage + prizes[1].percentpage  + prizes[0].percentpage:
               prizeIndex = 0;
               break;  
           }
+
+          console.log(prizeIndex);
+          return prizeIndex;
           if (!prizeIndex) {
             return randomIndex(prizes);
           }
